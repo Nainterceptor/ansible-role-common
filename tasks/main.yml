@@ -1,2 +1,18 @@
 ---
 # tasks file for nainterceptor.common
+- name: "Upgrade all packages"
+  yum: name=* state=latest
+  when: ansible_distribution == 'CentOS'
+
+- name: "Configure sshd"
+  template: src=../files/{{ ansible_distribution }}/sshd_config.j2 dest=/etc/ssh/sshd_config
+  when: ansible_distribution == 'CentOS'
+  notify:
+    - "Restart sshd"
+
+- name: "Install standard packages"
+  yum: name={{ item }} state=present
+  when: ansible_distribution == 'CentOS'
+  with_items:
+    - sudo
+    - epel-release
