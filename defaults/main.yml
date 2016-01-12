@@ -1,2 +1,3 @@
 ---
 # defaults file for nainterceptor.common
+root_password: None

@@ -1,5 +1,9 @@
 ---
 # tasks file for nainterceptor.common
+- name: Change root password
+  user: name=root password="{{ root_password }}"
+  when: root_password|default(None) != None
+
 - name: "Upgrade all packages"
   yum: name=* state=latest
   when: ansible_distribution == 'CentOS'
