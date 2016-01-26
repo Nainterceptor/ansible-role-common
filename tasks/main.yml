@@ -32,6 +32,8 @@
   with_items:
     - sudo
     - epel-release
+    - tar
+    - unzip
 
 - name: "Install standard packages"
   apt: name={{ item }} state=present
