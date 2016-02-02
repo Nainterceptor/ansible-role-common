@@ -55,16 +55,16 @@
 
 - name: Download pip.
   get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp validate_certs=no
-  when: pip_is_installed.rc != 0 and ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' and pip_is_installed.rc != 0
 
 - name: Install pip.
   command: "python /tmp/get-pip.py"
   sudo: yes
-  when: pip_is_installed.rc != 0 and ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' and pip_is_installed.rc != 0
 
 - name: Delete get-pip.py.
   file: state=absent path=/tmp/get-pip.py
-  when: pip_is_installed.rc != 0 and ansible_distribution == 'Debian'
+  when: ansible_distribution == 'Debian' and pip_is_installed.rc != 0
 
 - name: Upgrade to latest version of pip.
   command: "pip install -U pip"
