@@ -34,6 +34,7 @@
     - epel-release
     - tar
     - unzip
+    - rsync
 
 - name: "Install standard packages"
   apt: name={{ item }} state=present
