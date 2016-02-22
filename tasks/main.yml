@@ -35,6 +35,7 @@
     - tar
     - unzip
     - rsync
+    - git
 
 - name: "Install standard packages"
   apt: name={{ item }} state=present
@@ -46,6 +47,7 @@
     - python
     - python-dev
     - gcc
+    - git
 
 - name: Check to see if pip is already installed.
   command: "pip --version"
